@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="435dp"
+    android:layout_height="775dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="1dp"
+    android:layout_gravity="center"
+    android:background="@color/loading_background"
+    >
+
+    <ImageView
+        android:id="@+id/intro3_image"
+        android:layout_width="280dp"
+        android:layout_height="299dp"
+        android:layout_marginTop="100dp"
+        android:src="@mipmap/intros3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/intro2_text"
+        android:layout_width="280dp"
+        android:layout_height="92dp"
+        android:fontFamily="@font/hekayat"
+        android:gravity="center"
+        android:text="@string/intro3"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro3_title" />
+
+    <TextView
+        android:id="@+id/intro3_title"
+        android:layout_width="281dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/hekayat"
+        android:gravity="center"
+        android:text="@string/intro3_title"
+        android:textSize="27dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro3_image" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:background="@drawable/cardstyle1"
+        android:fontFamily="@font/hekayat"
+        android:text="@string/bezan_berim"
+        android:textColor="@color/tilte"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intro2_text"
+        app:layout_constraintVertical_bias="0.136"
+        tools:layout_editor_absoluteX="50dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<resources>
+
+    <string name="app_name">HezarGhab</string>
+    <string name="hezarghab">هزارقاب</string>
+    <string name="welcome">به هزارقاب خوش آمدید</string>
+    <string name="intro1"> در چند ساعت آینده قراره با ما توی دنیای جذابی که ساختیم غرق بشی </string>
+    <string name="intro2_title">ز غوغای جهان فارغ باشید</string>
+    <string name="intro2">تو اين بازى با هم به خونه هاى مختلف سر ميزنيم و قاب هاى مرموز زيادي رو كشف ميكنيم</string>
+    <string name="intro3_title">سكه بيشتر شانس بيشتر</string>
+    <string name="intro3">شما ميتونيد با خريد سكه شانس خودتون رو براي رد كردن مراحل و كشف قاب ها بیشتر كنيد</string>
+    <string name="start_button">شروع بازی</string>
+    <string name="bezan_berim">بزن بریم</string>
+
+</resources>
