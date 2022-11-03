@@ -53,6 +53,7 @@
     <com.mackhartley.roundedprogressbar.RoundedProgressBar
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:id="@+id/progress_loading"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="90dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"

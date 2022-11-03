@@ -57,6 +57,7 @@
         android:text="@string/bezan_berim"
         android:textColor="@color/tilte"
         android:textSize="30dp"
+        android:id="@+id/btn_lets_go_intro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro2_text"
         app:layout_constraintVertical_bias="0.136"

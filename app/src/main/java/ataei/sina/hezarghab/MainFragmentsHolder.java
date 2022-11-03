@@ -3,7 +3,6 @@ package ataei.sina.hezarghab;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,14 +18,13 @@ import ataei.sina.hezarghab.fragments.Information;
 import ataei.sina.hezarghab.fragments.Profile;
 import ataei.sina.hezarghab.fragments.Setting;
 import ataei.sina.hezarghab.fragments.Shop;
-import ataei.sina.hezarghab.interfaces.AdapterNews;
 
 public class MainFragmentsHolder extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
     Button home,profile,info,setting,shop;
     MainPagerAdapter mainPagerAdapter;
-    public static AdapterNews adapterNews;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +32,7 @@ public class MainFragmentsHolder extends AppCompatActivity {
         setUpViews();
         sets();
         handleCostumTabLayout();
-        //interImps();
+
     }
 
     private void sets() {
@@ -148,17 +146,7 @@ void buttonSets(int i){
         setting.setOnClickListener(V->click(0));
 
     }
-/*void interImps(){
 
-        adapterNews=new AdapterNews() {
-            @Override
-            public int position(int p) {
-                buttonSets(p);
-                return 0;
-            }
-        };
-
-}*/
 
     public static float pxFromDp(final Context context, final float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
