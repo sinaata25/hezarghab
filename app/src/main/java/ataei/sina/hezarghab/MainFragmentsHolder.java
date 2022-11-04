@@ -37,11 +37,14 @@ public class MainFragmentsHolder extends AppCompatActivity {
 
     private void sets() {
         mainPagerAdapter=new MainPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        mainPagerAdapter.addfragment(new Profile());
-        mainPagerAdapter.addfragment(new Shop());
-        mainPagerAdapter.addfragment(new Home());
-        mainPagerAdapter.addfragment(new Information());
         mainPagerAdapter.addfragment(new Setting());
+        mainPagerAdapter.addfragment(new Information());
+        mainPagerAdapter.addfragment(new Home());
+        mainPagerAdapter.addfragment(new Shop());
+        mainPagerAdapter.addfragment(new Profile());
+
+
+
         viewPager.setAdapter(mainPagerAdapter);
         viewPager.setCurrentItem(2);
         viewPager.setOnTouchListener(new View.OnTouchListener()

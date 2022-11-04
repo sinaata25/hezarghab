@@ -12,5 +12,10 @@
     <string name="intro3">شما ميتونيد با خريد سكه شانس خودتون رو براي رد كردن مراحل و كشف قاب ها بیشتر كنيد</string>
     <string name="start_button">شروع بازی</string>
     <string name="bezan_berim">بزن بریم</string>
+    <string name="setting">تنظیمات</string>
+    <string name="ertebat">ارتباط با ما</string>
+    <string name="soalat">سوالات متداول</string>
+    <string name="rules">قوانین ما</string>
+    <string name="harim">حریم خصوصی</string>
 
 </resources>

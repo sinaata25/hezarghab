@@ -11,84 +11,28 @@
       >
 
 
-        <TextView
-            android:id="@+id/heart_field"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="43dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/whitefield"
-            android:drawableRight="@drawable/ic_baseline_add_24"
-            android:drawablePadding="20dp" />
-
         <ImageView
-            android:id="@+id/heart_icon"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="9dp"
-            android:src="@mipmap/heart" />
-
-        <TextView
-            android:id="@+id/star_field"
-            android:layout_width="70dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="290dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/whitefield"
-            android:fontFamily="@font/hekayat" />
-
-        <ImageView
-            android:id="@+id/star_icon"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="340dp"
-            android:layout_marginTop="3dp"
-            android:src="@mipmap/star"
-
-            />
-
-        <TextView
-            android:id="@+id/coin_field"
-            android:layout_width="100dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="83dp"
-            android:background="@drawable/whitefield"
-            android:drawableRight="@drawable/ic_baseline_add_24"
-            android:drawablePadding="10dp"
-            android:fontFamily="@font/hekayat" />
-        <ImageView
-            android:id="@+id/coin_icon"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginLeft="20dp"
-            android:src="@mipmap/coin"
-            />
-<ImageView
-    android:id="@+id/ellipse"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:scaleType="fitXY"
-    android:layout_marginTop="150dp"
-    android:src="@mipmap/beyzi"
-    />
+            android:id="@+id/ellipse"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/beyzi" />
 
         <ImageView
             android:id="@+id/family_pic"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="170dp"
-            android:src="@mipmap/mainimage" />
+            android:layout_marginTop="70dp"
+            android:src="@mipmap/family" />
 
 
-       <Button
+        <Button
             android:id="@+id/start_button"
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:layout_marginLeft="77dp"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="400dp"
             android:background="@drawable/start_button"
             android:fontFamily="@font/hekayat"
             android:gravity="center"
