@@ -4,6 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/loading_background"
     tools:context=".Levels">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        tools:layout_editor_absoluteX="10dp">
+
+        <TextView
+            android:id="@+id/heart_field"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/whitefield"
+            android:drawableRight="@drawable/ic_baseline_add_24"
+            android:drawablePadding="20dp" />
+
+        <ImageView
+            android:id="@+id/heart_icon"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="9dp"
+            android:src="@mipmap/coin" />
+
+        <TextView
+            android:id="@+id/star_field"
+            android:layout_width="70dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/whitefield"
+            android:fontFamily="@font/hekayat" />
+
+        <ImageView
+            android:id="@+id/star_icon"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="340dp"
+
+            android:src="@drawable/ic_star" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_levels"
+        android:layout_width="match_parent"
+        android:layout_height="637dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+        app:layout_constraintVertical_bias="0.303" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
