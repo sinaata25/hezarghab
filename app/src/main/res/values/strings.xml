@@ -17,5 +17,7 @@
     <string name="soalat">سوالات متداول</string>
     <string name="rules">قوانین ما</string>
     <string name="harim">حریم خصوصی</string>
+    <string name="username">نام کاربری</string>
+    <string name="edit">ویرایش</string>
 
 </resources>
