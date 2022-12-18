@@ -15,14 +15,20 @@
         tools:layout_editor_absoluteX="10dp">
 
         <TextView
-            android:id="@+id/heart_field"
+            android:id="@+id/coin_field_levels"
             android:layout_width="100dp"
+            android:fontFamily="@font/hekayat"
             android:layout_height="30dp"
+            android:text="100"
+            android:paddingLeft="40dp"
             android:layout_marginLeft="25dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/black"
             android:layout_marginTop="20dp"
             android:background="@drawable/whitefield"
             android:drawableRight="@drawable/ic_baseline_add_24"
-            android:drawablePadding="20dp" />
+            android:drawablePadding="10dp" />
 
         <ImageView
             android:id="@+id/heart_icon"

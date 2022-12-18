@@ -5,10 +5,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,6 +26,7 @@ public class MainFragmentsHolder extends AppCompatActivity {
     TabLayout tabLayout;
     Button home,profile,info,setting,shop;
     MainPagerAdapter mainPagerAdapter;
+    TextView txt_coin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MainFragmentsHolder extends AppCompatActivity {
         setUpViews();
         sets();
         handleCostumTabLayout();
+
 
     }
 
@@ -56,6 +60,11 @@ public class MainFragmentsHolder extends AppCompatActivity {
             }
         });
 
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("shared", Context.MODE_PRIVATE);
+        String coins=sharedPref.getString("coin","100");
+        txt_coin.setText(coins);
+
+
     }
 
 
@@ -69,6 +78,7 @@ public class MainFragmentsHolder extends AppCompatActivity {
     setting=findViewById(R.id.btn_setting_home);
     info=findViewById(R.id.btn_info_home);
     shop=findViewById(R.id.btn_shop_home);
+    txt_coin=findViewById(R.id.heart_field);
     }
 
 void buttonSets(int i){

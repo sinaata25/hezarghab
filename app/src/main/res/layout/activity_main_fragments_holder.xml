@@ -20,7 +20,14 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/whitefield"
             android:drawableRight="@drawable/ic_baseline_add_24"
-            android:drawablePadding="20dp" />
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/hekayat"
+            android:gravity="center_horizontal|center"
+            android:paddingLeft="40dp"
+            android:text="100"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/heart_icon"
@@ -34,6 +41,7 @@
             android:id="@+id/star_field"
             android:layout_width="70dp"
             android:layout_height="28dp"
+            android:textColor="@color/black"
             android:layout_marginLeft="290dp"
             android:layout_marginTop="23dp"
             android:background="@drawable/whitefield"

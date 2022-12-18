@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,12 +38,20 @@ public class Levels extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Level>list_levels;
+    TextView textView_coins;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels);
         setUpViews();
+        sets();
         getData();
+    }
+
+    private void sets() {
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("shared", Context.MODE_PRIVATE);
+        String coins=sharedPref.getString("coin","100");
+        textView_coins.setText(coins);
     }
 
     private void getData() {
@@ -92,6 +103,7 @@ public class Levels extends AppCompatActivity {
     private void setUpViews() {
         recyclerView=findViewById(R.id.recycler_levels);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+        textView_coins=findViewById(R.id.coin_field_levels);
     }
 
 }
