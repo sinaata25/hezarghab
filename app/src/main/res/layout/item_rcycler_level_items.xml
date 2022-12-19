@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_marginVertical="8dp"
+    android:gravity="center"
+    android:paddingHorizontal="5dp"
+    android:layout_height="120dp">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="110dp"
+    app:cardCornerRadius="20dp"
+    android:id="@+id/card1"
+    android:layout_marginHorizontal="5dp"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+<ImageView
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:src="@mipmap/lock"
+    android:visibility="gone"
+    android:id="@+id/lock_1"
+    android:layout_marginBottom="2dp"
+    android:layout_height="65dp"
+    android:layout_marginVertical="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:id="@+id/text_1"
+        android:textSize="80dp"
+        android:fontFamily="@font/hekayat"
+        android:text="1"
+        android:textColor="@color/white"
+        android:layout_height="80dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="30dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/star_1_1"
+            android:src="@mipmap/star_no"
+            android:layout_height="30dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/star_1_2"
+            android:src="@mipmap/star_no"
+            android:layout_height="30dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/star_1_3"
+            android:src="@mipmap/star_no"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="110dp"
+        android:id="@+id/card2"
+        app:cardCornerRadius="20dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginVertical="8dp"
+                android:src="@mipmap/lock"
+                android:visibility="gone"
+                android:id="@+id/lock_2"
+                android:layout_marginBottom="2dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/text_2"
+                android:textSize="80dp"
+                android:fontFamily="@font/hekayat"
+                android:text="1"
+                android:textColor="@color/white"
+                android:layout_height="80dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="30dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_2_1"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_2_2"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_2_3"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="110dp"
+        app:cardCornerRadius="20dp"
+        android:id="@+id/card3"
+        android:layout_marginHorizontal="5dp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:src="@mipmap/lock"
+                android:visibility="gone"
+                android:id="@+id/lock_3"
+                android:layout_marginBottom="2dp"
+                android:layout_height="65dp"
+                android:layout_marginVertical="8dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textSize="80dp"
+                android:visibility="visible"
+                android:id="@+id/text_3"
+                android:fontFamily="@font/hekayat"
+                android:text="1"
+                android:textColor="@color/white"
+                android:layout_height="80dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="30dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_3_1"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_3_2"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/star_3_3"
+                    android:src="@mipmap/star_no"
+                    android:layout_height="30dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
