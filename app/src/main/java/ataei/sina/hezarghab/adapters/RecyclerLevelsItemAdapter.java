@@ -27,10 +27,11 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
 
     List<List<User_Item>>list;
     Context context;
-
-  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list){
+    String color;
+  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color){
       this.list=list;
       this.context=context;
+      this.color=color;
   }
 
     @NonNull
@@ -48,6 +49,10 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
         holder.num_level1.setText(sec_list.get(0).getNum_question());
         holder.num_level2.setText(sec_list.get(1).getNum_question());
         holder.num_level3.setText(sec_list.get(2).getNum_question());
+
+        holder.card_1.setCardBackgroundColor(Color.parseColor(color));
+        holder.card_2.setCardBackgroundColor(Color.parseColor(color));
+        holder.card_3.setCardBackgroundColor(Color.parseColor(color));
 
         if (sec_list.get(0).getAnswered().equals("0")){
             holder.num_level1.setVisibility(View.GONE);

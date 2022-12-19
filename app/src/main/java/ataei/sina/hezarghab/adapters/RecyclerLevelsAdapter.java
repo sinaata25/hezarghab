@@ -61,6 +61,7 @@ public class RecyclerLevelsAdapter extends RecyclerView.Adapter<RecyclerLevelsAd
                     Intent intent=new Intent(context.getApplicationContext(), LevelItems.class);
                     intent.putExtra("primary_color",level.getColor_primary());
                     intent.putExtra("secendary_color",level.getColor_secendary());
+                    intent.putExtra("name",level.getName());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

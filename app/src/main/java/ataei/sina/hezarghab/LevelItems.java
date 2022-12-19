@@ -1,12 +1,16 @@
 package ataei.sina.hezarghab;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +40,11 @@ import ataei.sina.hezarghab.statics.Urls;
 public class LevelItems extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    String secendary;
+    String name;
+    ConstraintLayout constraintLayout;
+    String primary;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +56,19 @@ public class LevelItems extends AppCompatActivity {
 
     private void sets() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+        Intent intent = getIntent();
+        primary=intent.getStringExtra("primary_color");
+        secendary=intent.getStringExtra("secendary_color");
+        name=intent.getStringExtra("name");
+        constraintLayout.setBackgroundColor(Color.parseColor(secendary));
+        textView.setText(name);
 
     }
 
     private void setUpviews() {
         recyclerView=findViewById(R.id.recycler_item_level);
+        constraintLayout=findViewById(R.id.constraint_lvel_item);
+        textView=findViewById(R.id.textView6);
     }
 
     private void getData() {
@@ -80,7 +97,7 @@ public class LevelItems extends AppCompatActivity {
                         System.out.println(list);
                     }
                     System.out.println(list);
-                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list));
+                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
