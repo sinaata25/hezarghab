@@ -1,6 +1,7 @@
 package ataei.sina.hezarghab.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import ataei.sina.hezarghab.LevelItems;
 import ataei.sina.hezarghab.R;
 import ataei.sina.hezarghab.models.Level;
 
@@ -51,6 +53,18 @@ public class RecyclerLevelsAdapter extends RecyclerView.Adapter<RecyclerLevelsAd
                     .load(level.getImg())
                     .fit()
                     .into(holder.imageView);
+
+
+            holder.cardGo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context.getApplicationContext(), LevelItems.class);
+                    intent.putExtra("primary_color",level.getColor_primary());
+                    intent.putExtra("secendary_color",level.getColor_secendary());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
 
 
 
