@@ -26,7 +26,6 @@
             android:drawableRight="@drawable/ic_baseline_add_24"
             android:drawablePadding="10dp"
             android:fontFamily="@font/hekayat"
-            android:gravity="center"
             android:paddingLeft="40dp"
             android:text="100"
             android:textColor="@color/black"
@@ -76,22 +75,63 @@
             android:layout_margin="40dp" />
     </LinearLayout>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="1dp"
-        android:orientation="horizontal"
-        android:numColumns="5"
-        android:listSelector="#00000000"
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/relativeLayout3"
+        android:layout_width="wrap_content"
         android:gravity="center"
         android:layout_marginLeft="20dp"
-        android:id="@+id/gridview_gozine"
-        android:verticalSpacing="10dp"
+        android:layout_height="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <GridView
+            android:id="@+id/gridview_javab"
+            android:layout_width="match_parent"
+            android:layout_gravity="right"
+            android:verticalSpacing="10dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:columnWidth="140dp"
+            android:gravity="center"
+            android:numColumns="3" />
+
+    </RelativeLayout>
+
+<!--
+    <GridView
+
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginTop="30dp"
         android:clipToPadding="false"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:horizontalSpacing="1dp"
+        android:listSelector="#00000000"
+        android:numColumns="8"
+        android:orientation="horizontal"
+        android:verticalSpacing="10dp"
+ />
+-->
+
+
+    <GridView
+        android:id="@+id/gridview_gozine"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="20dp"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:listSelector="#00000000"
+        android:numColumns="5"
+        android:orientation="horizontal"
+        android:verticalSpacing="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
