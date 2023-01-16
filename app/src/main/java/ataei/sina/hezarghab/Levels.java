@@ -3,12 +3,14 @@ package ataei.sina.hezarghab;
 import static java.security.AccessController.getContext;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class Levels extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Level>list_levels;
+    ConstraintLayout constraintLayout_wait,constraintLayout_level;
     TextView textView_coins;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,8 @@ public class Levels extends AppCompatActivity {
                     }
 
                     recyclerView.setAdapter(new RecyclerLevelsAdapter(getApplicationContext(),list_levels));
+                    constraintLayout_wait.setVisibility(View.GONE);
+                    constraintLayout_level.setVisibility(View.VISIBLE);
 
 
                 } catch (JSONException e) {
@@ -104,6 +109,8 @@ public class Levels extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycler_levels);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
         textView_coins=findViewById(R.id.coin_field_levels);
+        constraintLayout_level=findViewById(R.id.constraint_level);
+        constraintLayout_wait=findViewById(R.id.constraint_wait_level);
     }
 
 }

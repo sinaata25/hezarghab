@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/teal_700"
+    android:layout_height="match_parent"
+    tools:context=".Game">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/coin_field_levels"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/whitefield"
+            android:drawableRight="@drawable/ic_baseline_add_24"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/hekayat"
+            android:gravity="center"
+            android:paddingLeft="40dp"
+            android:text="100"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/heart_icon"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="9dp"
+            android:src="@mipmap/coin" />
+
+        <TextView
+            android:id="@+id/star_field"
+            android:layout_width="70dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/whitefield"
+            android:fontFamily="@font/hekayat" />
+
+        <ImageView
+            android:id="@+id/star_icon"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="340dp"
+
+            android:src="@drawable/ic_star" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@mipmap/frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp" />
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        android:numColumns="5"
+        android:listSelector="#00000000"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/gridview_gozine"
+        android:verticalSpacing="10dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

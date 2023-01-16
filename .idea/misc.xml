@@ -20,7 +20,10 @@
         <entry key="..\:/Android/hezarghab/app/src/main/res/drawable/whitefield.xml" value="0.2115" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/activity_level_items.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/activity_main_fragments_holder.xml" value="0.12" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/activity_main_fragments_holder.xml" value="0.2" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/game.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/gozine.xml" value="0.33" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/gozine_blue.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/home.xml" value="0.2" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/information.xml" value="0.21510416666666668" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/intro1.xml" value="0.20416666666666666" />
@@ -33,9 +36,10 @@
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/main_fragmentholder.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/main_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/main_page1.xml" value="0.20416666666666666" />
-        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/profile.xml" value="0.33" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/profile.xml" value="0.18" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/setting.xml" value="0.22" />
         <entry key="..\:/Android/hezarghab/app/src/main/res/layout/shop.xml" value="0.17016129032258065" />
+        <entry key="..\:/Android/hezarghab/app/src/main/res/layout/wait.xml" value="0.153125" />
       </map>
     </option>
   </component>

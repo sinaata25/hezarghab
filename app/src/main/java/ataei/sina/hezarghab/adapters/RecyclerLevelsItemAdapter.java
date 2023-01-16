@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import ataei.sina.hezarghab.Game;
 import ataei.sina.hezarghab.LevelItems;
 import ataei.sina.hezarghab.R;
 import ataei.sina.hezarghab.models.Level;
@@ -68,6 +69,14 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
         }
 
 
+        holder.card_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, Game.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
 
 
