@@ -1,33 +1,27 @@
 package ataei.sina.hezarghab.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.cardview.widget.CardView;
 
 import java.util.List;
 
 import ataei.sina.hezarghab.R;
 
-public class GridAdapter extends BaseAdapter {
+public class GridAdapterAns extends BaseAdapter {
 
     private Context context;
-
+   // private final String[] mobileValues;
     List<String>list;
-    String primary,secendary;
 
 
-    public GridAdapter(List<String>list,Context context,String primary,String secendary){
+
+    public GridAdapterAns(List<String>list, Context context){
         this.context=context;
         this.list=list;
-        this.primary=primary;
-        this.secendary=secendary;
     }
 
     @Override
@@ -42,13 +36,13 @@ public class GridAdapter extends BaseAdapter {
             gridView = new View(context);
 
             // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.gozine, null);
+            gridView = inflater.inflate(R.layout.gozine_1, null);
 
             // set value into textview
-            TextView textView = (TextView) gridView.findViewById(R.id.textview_gozine);
-            textView.setText(list.get(position));
-            CardView cardView=gridView.findViewById(R.id.card_gozine);
-            cardView.setCardBackgroundColor(Color.parseColor(primary));
+            TextView textView = (TextView) gridView.findViewById(R.id.textview_gozine1);
+            textView.setText(" ");
+
+
 
 
         } else {

@@ -40,6 +40,7 @@ public class Levels extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Level>list_levels;
+
     ConstraintLayout constraintLayout_wait,constraintLayout_level;
     TextView textView_coins;
     @Override

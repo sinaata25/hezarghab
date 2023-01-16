@@ -29,10 +29,12 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
     List<List<User_Item>>list;
     Context context;
     String color;
-  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color){
+    String color_secendary;
+  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color,String color_secendary){
       this.list=list;
       this.context=context;
       this.color=color;
+      this.color_secendary=color_secendary;
   }
 
     @NonNull
@@ -68,15 +70,43 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
             holder.lock3.setVisibility(View.VISIBLE);
         }
 
+        if (!sec_list.get(0).getAnswered().equals("0")){
+            holder.card_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, Game.class);
+                    intent.putExtra("primary",color);
+                    intent.putExtra("secendary",color_secendary);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+        }
+        if (!sec_list.get(1).getAnswered().equals("0")){
+            holder.card_2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, Game.class);
+                    intent.putExtra("primary",color);
+                    intent.putExtra("secendary",color_secendary);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+        }
+        if (!sec_list.get(2).getAnswered().equals("0")){
+            holder.card_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, Game.class);
+                    intent.putExtra("primary",color);
+                    intent.putExtra("secendary",color_secendary);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+        }
 
-        holder.card_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, Game.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
 
 
 

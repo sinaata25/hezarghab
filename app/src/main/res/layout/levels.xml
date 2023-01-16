@@ -91,7 +91,7 @@
         android:layout_width="match_parent"
         android:id="@+id/constraint_wait_level"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@color/loading_background">
 
         <com.airbnb.lottie.LottieAnimationView
@@ -114,7 +114,7 @@
             android:gravity="center"
             android:text="@string/wait"
             android:textColor="@color/white"
-            android:textSize="50dp"
+            android:textSize="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -122,11 +122,6 @@
             app:layout_constraintTop_toBottomOf="@+id/animationView"
             app:layout_constraintVertical_bias="0.74" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
 
 
 

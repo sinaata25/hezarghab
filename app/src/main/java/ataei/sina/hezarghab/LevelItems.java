@@ -97,7 +97,7 @@ public class LevelItems extends AppCompatActivity {
                         System.out.println(list);
                     }
                     System.out.println(list);
-                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary));
+                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary,secendary));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
