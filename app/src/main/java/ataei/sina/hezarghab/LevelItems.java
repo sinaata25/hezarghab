@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,8 @@ import java.util.Map;
 
 import ataei.sina.hezarghab.adapters.RecyclerLevelsAdapter;
 import ataei.sina.hezarghab.adapters.RecyclerLevelsItemAdapter;
+
+import ataei.sina.hezarghab.models.Game_model;
 import ataei.sina.hezarghab.models.Level;
 import ataei.sina.hezarghab.models.User_Item;
 import ataei.sina.hezarghab.statics.Keys;
@@ -42,24 +45,30 @@ public class LevelItems extends AppCompatActivity {
     RecyclerView recyclerView;
     String secendary;
     String name;
-    ConstraintLayout constraintLayout;
+    int levelId;
+    ConstraintLayout constraintLayout,wait_level_items;
     String primary;
     TextView textView;
+   public static List<Game_model>list_game_data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_items);
         setUpviews();
         sets();
-        getData();
+        getGameDataFromServer();
+
+
     }
 
     private void sets() {
+        list_game_data=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
         Intent intent = getIntent();
         primary=intent.getStringExtra("primary_color");
         secendary=intent.getStringExtra("secendary_color");
         name=intent.getStringExtra("name");
+        levelId=intent.getIntExtra("id",0);
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
         textView.setText(name);
 
@@ -69,6 +78,7 @@ public class LevelItems extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycler_item_level);
         constraintLayout=findViewById(R.id.constraint_lvel_item);
         textView=findViewById(R.id.textView6);
+        wait_level_items=findViewById(R.id.constraint_wait_level_items);
     }
 
     private void getData() {
@@ -94,11 +104,10 @@ public class LevelItems extends AppCompatActivity {
                                 list.add(sec_list);
                                 sec_list=new ArrayList<>();
                             }
-                        System.out.println(list);
                     }
-                    System.out.println(list);
-                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary,secendary));
 
+                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary,secendary,list_game_data));
+                    wait_level_items.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -124,4 +133,76 @@ public class LevelItems extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
+
+
+
+
+    String key = null;
+    List<Game_model> getGameDataFromServer(){
+        String url = null;
+        ////handle games data from here
+        if(levelId==1){
+            url=Urls.url_get_khale;
+            key=Keys.key_get_khale;
+        }
+
+
+        List<Game_model>list=new ArrayList<>();
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonArray=new JSONArray(response);
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject=jsonArray.getJSONObject(i);
+                        Game_model gameModel=new Game_model();
+                        gameModel.setId(jsonObject.getInt("id"));
+                        gameModel.setNum(jsonObject.getInt("num"));
+                        gameModel.setImage(jsonObject.getString("image"));
+                        gameModel.setAnswer(jsonObject.getString("answer"));
+                        String[] splited=jsonObject.getString("alphabets").split("/");
+                        List<String>stringList=new ArrayList<>();
+                        for (int j = 0; j < splited.length; j++) {
+                            stringList.add(splited[j]);
+                        }
+                        gameModel.setAlphabets(stringList);
+                        list.add(gameModel);
+                    }
+                    list_game_data=list;
+
+                    getData();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "خطا در اتصال به سرور", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            Map<String, String> params;
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                params = new HashMap<>();
+                params.put("key", key);
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+        return list;
+    }
+
+
+
+
+
+
+
 }

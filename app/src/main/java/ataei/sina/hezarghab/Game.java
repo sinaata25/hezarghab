@@ -4,24 +4,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ataei.sina.hezarghab.adapters.GridAdapter;
 import ataei.sina.hezarghab.adapters.GridAdapterAns;
+import ataei.sina.hezarghab.adapters.RecyclerLevelsItemAdapter;
+import ataei.sina.hezarghab.models.Game_model;
+import ataei.sina.hezarghab.models.User_Item;
+import ataei.sina.hezarghab.statics.Keys;
+import ataei.sina.hezarghab.statics.Urls;
 
 public class Game extends AppCompatActivity {
         GridAdapter gridAdapter;
         RelativeLayout relativeLayout;
         GridAdapterAns gridAdapterAns;
         GridView gridView;
+        int num_q;
         ConstraintLayout constraintLayout;
         GridView gridViewAns;
         String primary,secendary;
@@ -32,25 +55,28 @@ public class Game extends AppCompatActivity {
         setUpViews();
         getIntents();
         sets();
+        handle();
+
+
+    }
+
+    private void handle() {
+
 
     }
 
     private void sets() {
-        List<String >list=new ArrayList<>();
-        list.add("ب");list.add("پ");list.add("ک");list.add("ن");list.add("ه");
-        list.add("ب");list.add("ب");list.add("ب");list.add("ب");
-        list.add("ب");
-        gridAdapter=new GridAdapter(list,getApplicationContext(),primary,secendary);
+        Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+        Toast.makeText(getApplicationContext(),gameModel.getAnswer(),Toast.LENGTH_SHORT).show();
+
+        gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
         gridView.setAdapter(gridAdapter);
         //
-        List<String >list1=new ArrayList<>();
-        list1.add("ب");list1.add("پ");list1.add("ک");
-        list1.add("ک");
-
-        gridAdapterAns=new GridAdapterAns(list1,getApplicationContext());
+       String[]h= gameModel.getAnswer().split("");
+        gridAdapterAns=new GridAdapterAns(h,getApplicationContext());
         gridViewAns.setAdapter(gridAdapterAns);
         //
-        setGridViewSize(relativeLayout,list1.size(),gridViewAns);
+        setGridViewSize(relativeLayout,h.length,gridViewAns);
         //
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
 
@@ -89,7 +115,20 @@ public class Game extends AppCompatActivity {
     void getIntents(){
         Intent intent=getIntent();
         primary=intent.getStringExtra("primary");
+        num_q=intent.getIntExtra("num_q",1);
         secendary=intent.getStringExtra("secendary");
     }
+
+    Game_model  findQuestion(int num,List<Game_model>list){
+        Game_model gameModel=new Game_model();
+        for (int i = 0; i < list.size(); i++) {
+            if(num==list.get(i).getNum()){
+                    gameModel=list.get(i);
+                    break;
+            }
+        }
+        return gameModel;
+    }
+
 
 }

@@ -21,6 +21,7 @@ import java.util.List;
 import ataei.sina.hezarghab.Game;
 import ataei.sina.hezarghab.LevelItems;
 import ataei.sina.hezarghab.R;
+import ataei.sina.hezarghab.models.Game_model;
 import ataei.sina.hezarghab.models.Level;
 import ataei.sina.hezarghab.models.User_Item;
 
@@ -30,11 +31,14 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
     Context context;
     String color;
     String color_secendary;
-  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color,String color_secendary){
+    public  static List<Game_model>list_data_game;
+
+  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color,String color_secendary,List<Game_model>list_data_game){
       this.list=list;
       this.context=context;
       this.color=color;
       this.color_secendary=color_secendary;
+      this.list_data_game=list_data_game;
   }
 
     @NonNull
@@ -74,8 +78,10 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
             holder.card_1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int num_q=Integer.parseInt(sec_list.get(0).getNum_question());
                     Intent intent=new Intent(context, Game.class);
                     intent.putExtra("primary",color);
+                    intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
@@ -86,11 +92,15 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
             holder.card_2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int num_q=Integer.parseInt(sec_list.get(1).getNum_question());
                     Intent intent=new Intent(context, Game.class);
                     intent.putExtra("primary",color);
+                    intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(intent);
+
                 }
             });
         }
@@ -98,8 +108,10 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
             holder.card_3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int num_q=Integer.parseInt(sec_list.get(2).getNum_question());
                     Intent intent=new Intent(context, Game.class);
                     intent.putExtra("primary",color);
+                    intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
@@ -148,5 +160,9 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
 
         }
     }
+
+
+
+
 
 }

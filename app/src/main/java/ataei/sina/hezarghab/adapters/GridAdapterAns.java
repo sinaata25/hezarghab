@@ -15,11 +15,11 @@ public class GridAdapterAns extends BaseAdapter {
 
     private Context context;
    // private final String[] mobileValues;
-    List<String>list;
+    String[] list;
 
 
 
-    public GridAdapterAns(List<String>list, Context context){
+    public GridAdapterAns(String[] list, Context context){
         this.context=context;
         this.list=list;
     }
@@ -55,12 +55,12 @@ public class GridAdapterAns extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.size();
+        return list.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return list[position];
     }
 
     @Override
