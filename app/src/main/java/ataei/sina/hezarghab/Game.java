@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,12 +41,14 @@ import ataei.sina.hezarghab.models.Game_model;
 import ataei.sina.hezarghab.models.User_Item;
 import ataei.sina.hezarghab.statics.Keys;
 import ataei.sina.hezarghab.statics.Urls;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 public class Game extends AppCompatActivity {
         GridAdapter gridAdapter;
         RelativeLayout relativeLayout;
         GridAdapterAns gridAdapterAns;
         GridView gridView;
+        ImageView imageView_game;
         int num_q;
         ConstraintLayout constraintLayout;
         GridView gridViewAns;
@@ -85,6 +90,7 @@ public class Game extends AppCompatActivity {
 
     private void sets() {
         Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+        loadImage(gameModel.getImage(),3);
 
         gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
         gridView.setAdapter(gridAdapter);
@@ -98,6 +104,8 @@ public class Game extends AppCompatActivity {
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
 
     }
+
+
 
     void setAnsAdapter(String gss){
         guss_q.add(gss);
@@ -122,6 +130,7 @@ public class Game extends AppCompatActivity {
         gridViewAns=findViewById(R.id.gridview_javab);
         relativeLayout=findViewById(R.id.relativeLayout3);
         constraintLayout=findViewById(R.id.game_constraint);
+        imageView_game=findViewById(R.id.image_view_game);
     }
 
     void setGridViewSize(RelativeLayout relativeLayout,int itemNum,GridView gridView){
@@ -163,9 +172,37 @@ public class Game extends AppCompatActivity {
     }
 
 
+
+    void loadImage(String url,int hardness){
+
+        Picasso.get()
+                .load(url)
+                .transform(new BlurTransformation(getApplicationContext(), 25, hardness))
+                .into(imageView_game, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
+    }
+
+
+
+
     public interface News{
         void clicked(String ch);
         void win(boolean w);
     }
+
+
+
+
+
+
+
 
 }
