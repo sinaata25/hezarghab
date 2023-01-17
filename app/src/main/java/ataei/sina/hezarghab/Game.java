@@ -48,6 +48,9 @@ public class Game extends AppCompatActivity {
         ConstraintLayout constraintLayout;
         GridView gridViewAns;
         String primary,secendary;
+        public static News news;
+        public  static List<String>guss_q;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,19 +64,33 @@ public class Game extends AppCompatActivity {
     }
 
     private void handle() {
+        Game.news=new Game.News() {
+            @Override
+            public void clicked(String ch) {
+                setAnsAdapter(ch);
+            }
 
+            @Override
+            public void win(boolean w) {
+                if(w){
+                    Toast.makeText(getApplicationContext(),"you win",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"wrong!",Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        };
 
     }
 
     private void sets() {
         Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
-        Toast.makeText(getApplicationContext(),gameModel.getAnswer(),Toast.LENGTH_SHORT).show();
 
         gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
         gridView.setAdapter(gridAdapter);
         //
        String[]h= gameModel.getAnswer().split("");
-        gridAdapterAns=new GridAdapterAns(h,getApplicationContext());
+        gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
         gridViewAns.setAdapter(gridAdapterAns);
         //
         setGridViewSize(relativeLayout,h.length,gridViewAns);
@@ -82,10 +99,25 @@ public class Game extends AppCompatActivity {
 
     }
 
+    void setAnsAdapter(String gss){
+        guss_q.add(gss);
+        Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+        String[]h= gameModel.getAnswer().split("");
+        if(guss_q.size()<=h.length){
+            gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
+            gridViewAns.setAdapter(gridAdapterAns);
+        }else {
+            guss_q.clear();
+            gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
+            gridViewAns.setAdapter(gridAdapterAns);
+        }
+    }
+
 
 
 
     private void setUpViews() {
+        guss_q=new ArrayList<>();
         gridView=findViewById(R.id.gridview_gozine);
         gridViewAns=findViewById(R.id.gridview_javab);
         relativeLayout=findViewById(R.id.relativeLayout3);
@@ -130,5 +162,10 @@ public class Game extends AppCompatActivity {
         return gameModel;
     }
 
+
+    public interface News{
+        void clicked(String ch);
+        void win(boolean w);
+    }
 
 }

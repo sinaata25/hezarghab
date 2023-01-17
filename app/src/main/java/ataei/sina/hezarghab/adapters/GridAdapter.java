@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
 import java.util.List;
 
+import ataei.sina.hezarghab.Game;
 import ataei.sina.hezarghab.R;
 
 public class GridAdapter extends BaseAdapter {
@@ -50,10 +52,20 @@ public class GridAdapter extends BaseAdapter {
             CardView cardView=gridView.findViewById(R.id.card_gozine);
             cardView.setCardBackgroundColor(Color.parseColor(primary));
 
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Game.news.clicked(list.get(position));
+                }
+            });
+
 
         } else {
             gridView = (View) convertView;
         }
+
+
+
 
         return gridView;
     }

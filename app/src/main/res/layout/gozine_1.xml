@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:rotationY="180"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.cardview.widget.CardView
     android:layout_width="50dp"
@@ -17,7 +18,7 @@
             android:id="@+id/textview_gozine1"
             android:fontFamily="@font/hekayat"
             android:text=""
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textSize="40dp"
             android:layout_height="match_parent">
