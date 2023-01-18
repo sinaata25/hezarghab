@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,6 +38,7 @@ import java.util.Map;
 import ataei.sina.hezarghab.adapters.GridAdapter;
 import ataei.sina.hezarghab.adapters.GridAdapterAns;
 import ataei.sina.hezarghab.adapters.RecyclerLevelsItemAdapter;
+import ataei.sina.hezarghab.fragments.DialogWin;
 import ataei.sina.hezarghab.models.Game_model;
 import ataei.sina.hezarghab.models.User_Item;
 import ataei.sina.hezarghab.statics.Keys;
@@ -50,6 +52,7 @@ public class Game extends AppCompatActivity {
         GridView gridView;
         ImageView imageView_game;
         int num_q;
+        TextView txt_coin;
         ConstraintLayout constraintLayout;
         GridView gridViewAns;
         String primary,secendary;
@@ -78,7 +81,9 @@ public class Game extends AppCompatActivity {
             @Override
             public void win(boolean w) {
                 if(w){
-                    Toast.makeText(getApplicationContext(),"you win",Toast.LENGTH_SHORT).show();
+                    Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+                    DialogWin dialogWin=new DialogWin(gameModel);
+                    dialogWin.show(getSupportFragmentManager(),"");
                 }else {
                     Toast.makeText(getApplicationContext(),"wrong!",Toast.LENGTH_SHORT).show();
 
@@ -91,7 +96,7 @@ public class Game extends AppCompatActivity {
     private void sets() {
         Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
         loadImage(gameModel.getImage(),3);
-
+        //
         gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
         gridView.setAdapter(gridAdapter);
         //
@@ -102,7 +107,10 @@ public class Game extends AppCompatActivity {
         setGridViewSize(relativeLayout,h.length,gridViewAns);
         //
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
-
+        //set coins
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("shared", Context.MODE_PRIVATE);
+        String coins=sharedPref.getString("coin","100");
+        txt_coin.setText(coins);
     }
 
 
@@ -131,6 +139,7 @@ public class Game extends AppCompatActivity {
         relativeLayout=findViewById(R.id.relativeLayout3);
         constraintLayout=findViewById(R.id.game_constraint);
         imageView_game=findViewById(R.id.image_view_game);
+        txt_coin=findViewById(R.id.coin_field_game);
     }
 
     void setGridViewSize(RelativeLayout relativeLayout,int itemNum,GridView gridView){

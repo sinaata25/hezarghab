@@ -46,6 +46,7 @@ public class LevelItems extends AppCompatActivity {
     String secendary;
     String name;
     int levelId;
+    TextView coin_txt;
     ConstraintLayout constraintLayout,wait_level_items;
     String primary;
     TextView textView;
@@ -71,6 +72,9 @@ public class LevelItems extends AppCompatActivity {
         levelId=intent.getIntExtra("id",0);
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
         textView.setText(name);
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("shared", Context.MODE_PRIVATE);
+        String coins=sharedPref.getString("coin","100");
+        coin_txt.setText(coins);
 
     }
 
@@ -79,6 +83,7 @@ public class LevelItems extends AppCompatActivity {
         constraintLayout=findViewById(R.id.constraint_lvel_item);
         textView=findViewById(R.id.textView6);
         wait_level_items=findViewById(R.id.constraint_wait_level_items);
+        coin_txt=findViewById(R.id.coin_field_levels_item);
     }
 
     private void getData() {

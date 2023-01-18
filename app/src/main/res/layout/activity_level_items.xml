@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/coin_field_levels"
+            android:id="@+id/coin_field_levels_item"
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="25dp"
