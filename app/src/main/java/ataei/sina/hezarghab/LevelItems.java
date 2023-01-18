@@ -50,6 +50,7 @@ public class LevelItems extends AppCompatActivity {
     ConstraintLayout constraintLayout,wait_level_items;
     String primary;
     TextView textView;
+    public static LevInterface levInterface;
    public static List<Game_model>list_game_data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +59,18 @@ public class LevelItems extends AppCompatActivity {
         setUpviews();
         sets();
         getGameDataFromServer();
+        handle();
 
 
+    }
+
+    private void handle() {
+        levInterface=new LevInterface() {
+            @Override
+            public void refresh() {
+          getGameDataFromServer();
+            }
+        };
     }
 
     private void sets() {
@@ -111,7 +122,7 @@ public class LevelItems extends AppCompatActivity {
                             }
                     }
 
-                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary,secendary,list_game_data));
+                    recyclerView.setAdapter(new RecyclerLevelsItemAdapter(getApplicationContext(),list,primary,secendary,list_game_data,levelId));
                     wait_level_items.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -205,6 +216,10 @@ public class LevelItems extends AppCompatActivity {
     }
 
 
+
+    public interface LevInterface{
+        void refresh();
+    }
 
 
 

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -52,7 +53,9 @@ public class Game extends AppCompatActivity {
         GridView gridView;
         ImageView imageView_game;
         int num_q;
+        int num_wrong=0;
         TextView txt_coin;
+        int levelId=0;
         ConstraintLayout constraintLayout;
         GridView gridViewAns;
         String primary,secendary;
@@ -81,30 +84,33 @@ public class Game extends AppCompatActivity {
             @Override
             public void win(boolean w) {
                 if(w){
+                    addWinIntoServer();
                     Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
                     DialogWin dialogWin=new DialogWin(gameModel);
                     dialogWin.show(getSupportFragmentManager(),"");
                 }else {
-                    Toast.makeText(getApplicationContext(),"wrong!",Toast.LENGTH_SHORT).show();
+                    num_wrong++;
 
                 }
+            }
+
+            @Override
+            public void nextRound() {
+                num_q++;
+                guss_q.clear();
+                setUpNewGame();
+            }
+
+            @Override
+            public void exit() {
+                finish();
             }
         };
 
     }
 
     private void sets() {
-        Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
-        loadImage(gameModel.getImage(),3);
-        //
-        gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
-        gridView.setAdapter(gridAdapter);
-        //
-       String[]h= gameModel.getAnswer().split("");
-        gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
-        gridViewAns.setAdapter(gridAdapterAns);
-        //
-        setGridViewSize(relativeLayout,h.length,gridViewAns);
+        setUpNewGame();
         //
         constraintLayout.setBackgroundColor(Color.parseColor(secendary));
         //set coins
@@ -113,6 +119,19 @@ public class Game extends AppCompatActivity {
         txt_coin.setText(coins);
     }
 
+    void  setUpNewGame(){
+        Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+        loadImage(gameModel.getImage(),1);
+        //
+        gridAdapter=new GridAdapter(gameModel.getAlphabets(),getApplicationContext(),primary,secendary);
+        gridView.setAdapter(gridAdapter);
+        //
+        String[]h= gameModel.getAnswer().split("");
+        gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
+        gridViewAns.setAdapter(gridAdapterAns);
+        //
+        setGridViewSize(relativeLayout,h.length,gridViewAns);
+    }
 
 
     void setAnsAdapter(String gss){
@@ -129,6 +148,54 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    void addWinIntoServer(){
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("shared", Context.MODE_PRIVATE);
+        int id_user=Integer.parseInt(sharedPref.getString("id","0"));
+        int star=set_star();
+        int num_question=num_q;
+
+
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, Urls.url_update_user_level, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                LevelItems.levInterface.refresh();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), "خطا در اتصال به سرور", Toast.LENGTH_SHORT).show();
+                }
+            }){
+                Map<String, String> params;
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    params = new HashMap<>();
+                    params.put("id_user", String.valueOf(id_user));
+                    params.put("num_q", String.valueOf(num_question));
+                    params.put("mode", String.valueOf(levelId));
+                    params.put("star", String.valueOf(star));
+                    params.put("key", Keys.key_update_user_level);
+                    return params;
+                }
+
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+
+    }
+
+    int set_star(){
+        int str=0;
+        if(num_wrong<=2){
+            str=3;
+        }else if(num_wrong>2 && num_wrong<=6){
+            str=2;
+        }else {
+            str=1;
+        }
+        return str;
+    }
 
 
 
@@ -167,6 +234,7 @@ public class Game extends AppCompatActivity {
         primary=intent.getStringExtra("primary");
         num_q=intent.getIntExtra("num_q",1);
         secendary=intent.getStringExtra("secendary");
+        levelId=intent.getIntExtra("levelId",0);
     }
 
     Game_model  findQuestion(int num,List<Game_model>list){
@@ -205,6 +273,8 @@ public class Game extends AppCompatActivity {
     public interface News{
         void clicked(String ch);
         void win(boolean w);
+        void nextRound();
+        void exit();
     }
 
 

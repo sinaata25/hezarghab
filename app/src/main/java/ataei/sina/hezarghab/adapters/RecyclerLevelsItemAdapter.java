@@ -31,14 +31,16 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
     Context context;
     String color;
     String color_secendary;
+    int levelId;
     public  static List<Game_model>list_data_game;
 
-  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color,String color_secendary,List<Game_model>list_data_game){
+  public RecyclerLevelsItemAdapter(Context context, List<List<User_Item>>list,String color,String color_secendary,List<Game_model>list_data_game,int levelId){
       this.list=list;
       this.context=context;
       this.color=color;
       this.color_secendary=color_secendary;
       this.list_data_game=list_data_game;
+      this.levelId=levelId;
   }
 
     @NonNull
@@ -61,17 +63,58 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
         holder.card_2.setCardBackgroundColor(Color.parseColor(color));
         holder.card_3.setCardBackgroundColor(Color.parseColor(color));
 
+
+
+
         if (sec_list.get(0).getAnswered().equals("0")){
             holder.num_level1.setVisibility(View.GONE);
             holder.lock1.setVisibility(View.VISIBLE);
+        }else {
+            if(Integer.parseInt(sec_list.get(0).getStars())==3){
+                holder.star_1_1.setImageResource(R.drawable.ic_star);
+                holder.star_1_2.setImageResource(R.drawable.ic_star);
+                holder.star_1_3.setImageResource(R.drawable.ic_star);
+
+            }else if(Integer.parseInt(sec_list.get(0).getStars())==2){
+                holder.star_1_1.setImageResource(R.drawable.ic_star);
+                holder.star_1_2.setImageResource(R.drawable.ic_star);
+            }else if(Integer.parseInt(sec_list.get(0).getStars())==1) {
+                holder.star_1_1.setImageResource(R.drawable.ic_star);
+            }
         }
         if (sec_list.get(1).getAnswered().equals("0")){
             holder.num_level2.setVisibility(View.GONE);
             holder.lock2.setVisibility(View.VISIBLE);
+
+        }else {
+            if(Integer.parseInt(sec_list.get(1).getStars())==3){
+                holder.star_2_1.setImageResource(R.drawable.ic_star);
+                holder.star_2_2.setImageResource(R.drawable.ic_star);
+                holder.star_2_3.setImageResource(R.drawable.ic_star);
+
+            }else if(Integer.parseInt(sec_list.get(1).getStars())==2){
+                holder.star_2_1.setImageResource(R.drawable.ic_star);
+                holder.star_2_2.setImageResource(R.drawable.ic_star);
+            }else if(Integer.parseInt(sec_list.get(1).getStars())==1) {
+                holder.star_2_1.setImageResource(R.drawable.ic_star);
+            }
         }
         if (sec_list.get(2).getAnswered().equals("0")){
             holder.num_level3.setVisibility(View.GONE);
             holder.lock3.setVisibility(View.VISIBLE);
+
+        }else {
+            if(Integer.parseInt(sec_list.get(2).getStars())==3){
+                holder.star_3_1.setImageResource(R.drawable.ic_star);
+                holder.star_3_2.setImageResource(R.drawable.ic_star);
+                holder.star_3_3.setImageResource(R.drawable.ic_star);
+
+            }else if(Integer.parseInt(sec_list.get(2).getStars())==2){
+                holder.star_3_1.setImageResource(R.drawable.ic_star);
+                holder.star_3_2.setImageResource(R.drawable.ic_star);
+            }else if(Integer.parseInt(sec_list.get(2).getStars())==1) {
+                holder.star_3_1.setImageResource(R.drawable.ic_star);
+            }
         }
 
         if (!sec_list.get(0).getAnswered().equals("0")){
@@ -83,6 +126,7 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
                     intent.putExtra("primary",color);
                     intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
+                    intent.putExtra("levelId",levelId);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -97,6 +141,7 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
                     intent.putExtra("primary",color);
                     intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
+                    intent.putExtra("levelId",levelId);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     context.startActivity(intent);
@@ -113,6 +158,7 @@ public class RecyclerLevelsItemAdapter extends RecyclerView.Adapter<RecyclerLeve
                     intent.putExtra("primary",color);
                     intent.putExtra("num_q",num_q);
                     intent.putExtra("secendary",color_secendary);
+                    intent.putExtra("levelId",levelId);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
