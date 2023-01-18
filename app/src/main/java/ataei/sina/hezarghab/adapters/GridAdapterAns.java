@@ -60,6 +60,13 @@ public class GridAdapterAns extends BaseAdapter {
                 }
             }
 
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Game.news.clean();
+                }
+            });
+
 
 
 

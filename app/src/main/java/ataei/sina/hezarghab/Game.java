@@ -105,6 +105,18 @@ public class Game extends AppCompatActivity {
             public void exit() {
                 finish();
             }
+
+            @Override
+            public void clean() {
+                if(guss_q.size()!=0){
+                guss_q.remove(guss_q.size()-1);
+                Game_model gameModel=findQuestion(num_q, RecyclerLevelsItemAdapter.list_data_game);
+                String[]h= gameModel.getAnswer().split("");
+                gridAdapterAns=new GridAdapterAns(h,getApplicationContext(),guss_q);
+                gridViewAns.setAdapter(gridAdapterAns);
+                //
+                setGridViewSize(relativeLayout,h.length,gridViewAns);
+            }}
         };
 
     }
@@ -275,6 +287,7 @@ public class Game extends AppCompatActivity {
         void win(boolean w);
         void nextRound();
         void exit();
+        void clean();
     }
 
 
